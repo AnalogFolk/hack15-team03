@@ -22,14 +22,28 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 }
+.scan {
+  height: 180px ;
 
+
+}
 body {
-    background-color:#3498db;
+  padding-top: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+    background-color: #ecf0f1;
 
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 
 }
+#deviceready{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
+#info{
+  font-size: 100px;
+}
 /* Portrait layout (default) */
 .app {
     margin: 0 auto;
@@ -39,7 +53,7 @@ body {
 }
 
 h1 {
-    font-size:24px;
+    font-size:200px;
     font-weight:normal;
     margin:0px;
     overflow:visible;
