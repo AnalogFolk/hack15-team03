@@ -53,43 +53,35 @@ var app = {
 
     scan: function() {
         console.log('scanning');
-        
+
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-        scanner.scan( function (result) { 
-
-            alert("We got a barcode\n" + 
-            "Result: " + result.text + "\n" + 
-            "Format: " + result.format + "\n" + 
-            "Cancelled: " + result.cancelled);  
-
-           console.log("Scanner result: \n" +
-                "text: " + result.text + "\n" +
-                "format: " + result.format + "\n" +
-                "cancelled: " + result.cancelled + "\n");
+        scanner.scan( function (result) {
             document.getElementById("info").innerHTML = result.text;
-            console.log(result);
+
+            this.ajaxRequest("https://api.what3words.com/w3w?key=6MF2E3SJ&string="+result.text, function(data){
+              data;
+                document.getElementById("info").href = "geo:"+data.position[0] +"," + data.position[1]
+            });
             /*
             if (args.format == "QR_CODE") {
                 window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
             }
             */
 
-        }, function (error) { 
-            console.log("Scanning failed: ", error); 
+        }, function (error) {
+            console.log("Scanning failed: ", error);
         } );
-    },
-
-    encode: function() {
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
-        scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.nhl.com", function(success) {
-            alert("encode success: " + success);
-          }, function(fail) {
-            alert("encoding failed: " + fail);
-          }
-        );
-
     }
 
+  ajaxRequest:  function (url, callback){
+  var xhr = new XMLHttpRequest();
+
+  xhr.onreadystatechange =  function(data){
+    if (xhr.readyState != 4 || xhr.status != 200) return;
+    callback(JSON.parse(xhr.responseText));
+  }
+  xhr.open("GET", url, true);
+  xhr.send();
+}
 };
