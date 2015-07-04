@@ -24,12 +24,18 @@
 }
 
 body {
-    background-color:#3498db;
+  padding-top: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+    background-color: #ecf0f1;
 
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 
 }
-
+#deviceready{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 /* Portrait layout (default) */
 .app {
     margin: 0 auto;
@@ -39,7 +45,7 @@ body {
 }
 
 h1 {
-    font-size:24px;
+    font-size:100px;
     font-weight:normal;
     margin:0px;
     overflow:visible;
