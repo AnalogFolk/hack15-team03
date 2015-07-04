@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Scan QR code for directions</h4>
+      </div>
+      <div class="modal-body" style="height: 200px">
+        <!--<iframe id="qrCode" style="width: 172px;  position:absolute;  margin-left: 410px; overflow:none;"></iframe>-->
+        <div style="width:45%; position:absolute;">
+          <img src="" id="qrCode"/>
+        </div>
+        <div style="width:45%; float:right;">
+          <h2> Your 3 unique words are:</h2>
+          <div id="word1" style="width: 150px"></div>
+          <div id="word2" style="width: 150px"></div>
+          <div id="word3" style="width: 150px"></div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

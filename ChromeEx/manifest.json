@@ -7,8 +7,10 @@
     },
     "content_scripts": [
       {"matches": ["http://*/*", "https://*/*"],
-      "js":["page.js"]
+      "js":["jquery.min.js", "page.js", "bootstrap.min.js"],
+      "css": ["bootstrap.min.css"]
       }],
+
   "permissions": [
     "contextMenus",
     "tabs",
@@ -17,5 +19,8 @@
     "persistent": false,
     "scripts": ["sample.js"]
   },
+  "web_accessible_resources":[
+    "template.html"
+  ],
   "manifest_version": 2
 }

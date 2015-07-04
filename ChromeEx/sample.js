@@ -1,12 +1,8 @@
 // The onClicked callback function.
 function onClickHandler(info, tab) {
-
-
 ajaxRequest("http://maps.googleapis.com/maps/api/geocode/json?address=" + info.selectionText, getCoordinates);
-
 };
 chrome.contextMenus.onClicked.addListener(onClickHandler);
-
 chrome.runtime.onInstalled.addListener(function() {
   // Create one test item for each context type.
   var contexts = ["selection","link","editable"];
@@ -20,10 +16,8 @@ chrome.runtime.onInstalled.addListener(function() {
 var getWord = function(data){
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, data.words, function(response) {
-      console.log(response.farewell);
     });
   });
-  console.log(data.words);
 }
 var getCoordinates =  function(data){
   var lat = data.results[0].geometry.location.lat;
