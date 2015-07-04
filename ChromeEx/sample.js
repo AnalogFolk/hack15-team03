@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(function() {
   var contexts = ["selection","link","editable"];
   for (var i = 0; i < contexts.length; i++) {
     var context = contexts[i];
-    var title = "Test '" + context + "' menu item";
+    var title = "WhereU";
     var id = chrome.contextMenus.create({"title": title, "contexts":[context],
                                          "id": "context" + context});
   }
