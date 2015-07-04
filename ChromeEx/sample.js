@@ -16,6 +16,7 @@ chrome.runtime.onInstalled.addListener(function() {
   }
 });
 var getWord = function(data){
+  chrome.windows.create()
   console.log(data.words);
 }
 var getCoordinates =  function(data){
