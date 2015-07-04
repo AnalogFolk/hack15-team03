@@ -12,7 +12,7 @@
     <author href="http://rajdeep.io" email="me@rajdeep.io">
         Raj Dosanjh and Andrew Nicoll
     </author>
-
+<gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.1.0" />
     <feature name="http://api.phonegap.com/1.0/camera"/>
 <feature name="http://api.phonegap.com/1.0/contacts"/>
 <feature name="http://api.phonegap.com/1.0/file"/>
