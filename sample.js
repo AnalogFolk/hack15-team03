@@ -1,24 +1,10 @@
-// Copyright (c) 2012 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 // The onClicked callback function.
 function onClickHandler(info, tab) {
     //alert("item " + info.menuItemId + " was clicked");
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange =  function(data){
-      if (xhr.readyState != 4 || xhr.status != 200) return;
-      console.log(xhr.responseText)
-    }
-; // Implemented elsewhere.
-    xhr.open("GET", "http://maps.googleapis.com/maps/api/geocode/json?address=" + info.selectionText, true);
-    xhr.send();
-    console.log(xhr.responseText);
-    //alert("tab: " + JSON.stringify(tab));
+ajaxRequest("http://maps.googleapis.com/maps/api/geocode/json?address=" + info.selectionText, getCoordinates);
 };
 chrome.contextMenus.onClicked.addListener(onClickHandler);
 
-// Set up context menu tree at install time.
 chrome.runtime.onInstalled.addListener(function() {
   // Create one test item for each context type.
   var contexts = ["selection","link","editable"];
@@ -29,3 +15,21 @@ chrome.runtime.onInstalled.addListener(function() {
                                          "id": "context" + context});
   }
 });
+var getWord = function(data){
+  console.log(data.words);
+}
+var getCoordinates =  function(data){
+  var lat = data.results[0].geometry.location.lat;
+  var lng = data.results[0].geometry.location.lng;
+  ajaxRequest("https://api.what3words.com/position?key=6MF2E3SJ&position="+lat+","+lng, getWord);
+}
+function ajaxRequest(url, callback){
+  var xhr = new XMLHttpRequest();
+
+  xhr.onreadystatechange =  function(data){
+    if (xhr.readyState != 4 || xhr.status != 200) return;
+    callback(JSON.parse(xhr.responseText));
+  }
+  xhr.open("GET", url, true);
+  xhr.send();
+}
