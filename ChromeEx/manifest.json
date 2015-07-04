@@ -2,7 +2,14 @@
   "name": "Context Menu Extension",
   "description": "Shows some of the features of the Context Menus API using an event page",
   "version": "0.7",
-  "permissions": ["contextMenus"],
+    "content_scripts": [
+      {"matches": ["http://*/", "https://*/"],
+      "js":["page.js"]
+      }],
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "activeTab","http://*/", "https://*/"],
   "background": {
     "persistent": false,
     "scripts": ["sample.js"]

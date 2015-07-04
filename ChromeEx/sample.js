@@ -1,7 +1,11 @@
 // The onClicked callback function.
 function onClickHandler(info, tab) {
-    //alert("item " + info.menuItemId + " was clicked");
+  chrome.tabs.getSelected(null, function(tab) {
+    chrome.runtime.sendMessage({greeting: "hello"});
+});
+
 ajaxRequest("http://maps.googleapis.com/maps/api/geocode/json?address=" + info.selectionText, getCoordinates);
+
 };
 chrome.contextMenus.onClicked.addListener(onClickHandler);
 
@@ -16,7 +20,7 @@ chrome.runtime.onInstalled.addListener(function() {
   }
 });
 var getWord = function(data){
-  chrome.windows.create()
+
   console.log(data.words);
 }
 var getCoordinates =  function(data){
