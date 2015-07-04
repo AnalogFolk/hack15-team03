@@ -1,21 +1,11 @@
 {
-  "manifest_version": 2,
-
-  "name": "Sample App",
-  "description": "Sample App",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+  "name": "Context Menus Sample (with Event Page)",
+  "description": "Shows some of the features of the Context Menus API using an event page",
+  "version": "0.7",
+  "permissions": ["contextMenus"],
+  "background": {
+    "persistent": false,
+    "scripts": ["sample.js"]
   },
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-  ],
-  "content_scripts":[{
-    "js":["location.js"],
-    "matches":["http://*/*"]
-  }],
-  "web_accessible_resources": ["app.js"]
+  "manifest_version": 2
 }
